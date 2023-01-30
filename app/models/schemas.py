@@ -8,21 +8,25 @@ class TaskModel(BaseModel):
     name: str
     priority: int
     status: str
-    description: str
-    created_at: str
-    updated_at: str
 
     class Config:
         schema_extra = {
-            "example": {
-                "name": "read a book",
-                "priority": 1,
-                "status": "pending",
-                "description": "read a book about python",
-                "created_at": "2021-01-01 00:00:00",
-                "updated_at": "2021-01-01 00:00:00",
-            }
+            "example": {"name": "read a book", "priority": 1, "status": "pending"}
         }
+
+    @validator("priority")
+    def priority_must_be_integer(cls, v):
+        if not isinstance(v, int):
+            raise ValueError("Priority must be an integer")
+        return v
+
+
+class TaskUpdateModel(BaseModel):
+
+    priority: int
+
+    class Config:
+        schema_extra = {"example": {"priority": 1}}
 
     @validator("priority")
     def priority_must_be_integer(cls, v):
