@@ -8,6 +8,14 @@ on:
 jobs:
   test-code:
     runs-on: ubuntu-22.04
+    services:
+      mongo:
+        image: mongo:6.0.2
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+        ports:
+          - 27017:27017
     steps:
       - name: checkout code
         uses: actions/checkout@v3
@@ -17,12 +25,6 @@ jobs:
           python-version: 3.8
       - name: install requirements
         run: pip install -r requirements.txt
-      - name: create mongodb container
-        run: |
-          docker run -d -p 27017:27017 --name some-mongo \
-            -e MONGO_INITDB_ROOT_USERNAME=root \
-            -e MONGO_INITDB_ROOT_PASSWORD=example \
-            mongo
       - name: run py test
         id: run-py-test
         run: pytest
