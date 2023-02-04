@@ -20,7 +20,7 @@ jobs:
           cat password.txt | docker login --username xiaopeng163 --password-stdin
       - name: build image
         run: |
-          docker image build -t xiaopeng163/fastapi-demo:latest
+          docker image build -t xiaopeng163/fastapi-demo:latest .
       - name: push image
         run: |
           docker image push xiaopeng163/fastapi-demo:latest
