@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+      DOCKER_HUB_USER: xiaopeng163
 
     steps:
       - name: checkout code
@@ -17,10 +18,10 @@ jobs:
       - name: docker login
         run: |
           echo $DOCKER_HUB_TOKEN > password.txt
-          cat password.txt | docker login --username xiaopeng163 --password-stdin
+          cat password.txt | docker login --username $DOCKER_HUB_USER --password-stdin
       - name: build image
         run: |
-          docker image build -t xiaopeng163/fastapi-demo:latest .
+          docker image build -t $DOCKER_HUB_USER/fastapi-demo:latest .
       - name: push image
         run: |
-          docker image push xiaopeng163/fastapi-demo:latest
+          docker image push $DOCKER_HUB_USER/fastapi-demo:latest
