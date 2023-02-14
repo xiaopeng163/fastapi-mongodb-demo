@@ -17,6 +17,6 @@ runs:
     - run: |
         echo ${{ inputs.docker_hub_token }} > password.txt
         cat password.txt | docker login --username ${{ inputs.docker_hub_user}} --password-stdin
-        docker image build -t ${{ inputs.docker_hub_user}}/${{ image_name }} .
-        docker image push ${{ inputs.docker_hub_user}}/${{ image_name }}
+        docker image build -t ${{ inputs.docker_hub_user}}/${{ inputs.image_name }} .
+        docker image push ${{ inputs.docker_hub_user}}/${{ inputs.image_name }}
       shell: bash
