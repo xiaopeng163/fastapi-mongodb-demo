@@ -14,13 +14,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: docker login
-      run: |
+    - run: |
         echo ${{ inputs.docker_hub_token }} > password.txt
         cat password.txt | docker login --username ${{ inputs.docker_hub_user}} --password-stdin
-    - name: build image
-      run: |
         docker image build -t ${{ inputs.docker_hub_user}}/${{ image_name }} .
-    - name: push image
-      run: |
         docker image push ${{ inputs.docker_hub_user}}/${{ image_name }}
