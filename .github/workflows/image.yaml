@@ -8,17 +8,13 @@ on:
 jobs:
   build-docker-image:
     runs-on: ubuntu-22.04
-    env:
-      DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-      DOCKER_HUB_USER: xiaopeng163
-
     steps:
       - name: checkout code
         uses: actions/checkout@v3
       - name: build image
-        users: .github/actions/docker.yaml
+        uses: .github/actions/docker.yaml
         with:
-          docker_hub_token: ${{ secrets.docker_hub_token }}
-          docker_hub_user: ${{ secrets.docker_hub_user }}
+          docker_hub_token: ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker_hub_user: ${{ secrets.DOCKER_HUB_USER }}
           image_name: fastapi-mongo-demo:latest
 
