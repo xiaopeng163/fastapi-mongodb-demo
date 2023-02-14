@@ -1,0 +1,26 @@
+name: 'build docker image'
+description: 'build docker image'
+inputs:
+  docker_hub_token:  # id of input
+    description: 'docker hub token'
+    required: true
+  docker_hub_user:
+    description: 'docker hub user'
+    required: true
+  image_name:
+    description: 'image name'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: docker login
+      run: |
+        echo ${{ inputs.docker_hub_token }} > password.txt
+        cat password.txt | docker login --username ${{ inputs.docker_hub_user}} --password-stdin
+    - name: build image
+      run: |
+        docker image build -t ${{ inputs.docker_hub_user}}/${{ image_name }} .
+    - name: push image
+      run: |
+        docker image push ${{ inputs.docker_hub_user}}/${{ image_name }}
