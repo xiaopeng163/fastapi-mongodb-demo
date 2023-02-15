@@ -13,7 +13,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
       - name: build docker image
-        uses: xiaopeng163/github-action-docker@v1
+        uses: xiaopeng163/github-action-docker@v1.0.0
         with:
           docker_hub_user: ${{ secrets.DOCKER_HUB_USER }}
           docker_hub_token: ${{ secrets.DOCKER_HUB_TOKEN }}
