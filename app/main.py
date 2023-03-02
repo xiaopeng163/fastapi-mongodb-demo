@@ -3,7 +3,6 @@ from fastapi.responses import RedirectResponse
 
 from app.routes.tasks import router as TaskRouterV1
 
-
 app = FastAPI(
     title="Task API",
     description="API for Task management",

@@ -3,8 +3,7 @@ import os
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 
-from app.config import MONGO_URL, MONGO_DB_NAME
-
+from app.config import MONGO_DB_NAME, MONGO_URL
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URL)
 database = client.get_database(MONGO_DB_NAME)

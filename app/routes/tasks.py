@@ -3,20 +3,10 @@ from typing import List, Union
 from fastapi import APIRouter, Body, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 
-from app.models.base import (
-    ResponseModel,
-)
+from app.database import (add_task, delete_task, retrieve_task, retrieve_tasks,
+                          update_task)
+from app.models.base import ResponseModel
 from app.models.schemas import TaskModel, TaskUpdateModel
-
-
-from app.database import (
-    add_task,
-    delete_task,
-    retrieve_tasks,
-    retrieve_task,
-    update_task,
-)
-
 
 router = APIRouter()
 

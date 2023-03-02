@@ -1,12 +1,7 @@
 import pytest
 
-from app.database import (
-    add_task,
-    delete_task,
-    retrieve_tasks,
-    retrieve_task,
-    update_task,
-)
+from app.database import (add_task, delete_task, retrieve_task, retrieve_tasks,
+                          update_task)
 
 
 @pytest.mark.asyncio
