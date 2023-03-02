@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Union
 
 from fastapi import APIRouter, Body, HTTPException, status
 from fastapi.encoders import jsonable_encoder
