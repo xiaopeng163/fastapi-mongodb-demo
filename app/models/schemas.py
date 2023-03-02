@@ -1,6 +1,7 @@
-from typing import List, Optional
+from __future__ import annotations
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel
+from pydantic import validator
 
 
 class TaskModel(BaseModel):
@@ -10,13 +11,17 @@ class TaskModel(BaseModel):
 
     class Config:
         schema_extra = {
-            "example": {"name": "read a book", "priority": 1, "status": "pending"}
+            'example': {
+                'name': 'read a book',
+                'priority': 1,
+                'status': 'pending'
+            }
         }
 
-    @validator("priority")
+    @validator('priority')
     def priority_must_be_integer(cls, v):
         if not isinstance(v, int):
-            raise ValueError("Priority must be an integer")
+            raise ValueError('Priority must be an integer')
         return v
 
 
@@ -25,10 +30,10 @@ class TaskUpdateModel(BaseModel):
     priority: int
 
     class Config:
-        schema_extra = {"example": {"priority": 1}}
+        schema_extra = {'example': {'priority': 1}}
 
-    @validator("priority")
+    @validator('priority')
     def priority_must_be_integer(cls, v):
         if not isinstance(v, int):
-            raise ValueError("Priority must be an integer")
+            raise ValueError('Priority must be an integer')
         return v

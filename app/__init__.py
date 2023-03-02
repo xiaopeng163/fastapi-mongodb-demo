@@ -1,1 +1,3 @@
-from app.main import app
+from __future__ import annotations
+
+from app.main import app  # noqa

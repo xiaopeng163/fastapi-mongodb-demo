@@ -17,6 +17,8 @@ pycparser==2.21
 pydantic==1.10.2
 pymongo==4.3.2
 pysondb==1.6.7
+pytest==7.2.1
+pytest-asyncio==0.20.3
 python-jose==3.3.0
 python-multipart==0.0.5
 rsa==4.9
@@ -26,5 +28,3 @@ starlette==0.19.1
 typing_extensions==4.3.0
 uvicorn==0.18.3
 wcwidth==0.2.5
-pytest==7.2.1
-pytest-asyncio==0.20.3
