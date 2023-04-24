@@ -1,0 +1,23 @@
+name: test go
+ 
+on: [push, workflow_dispatch]
+ 
+jobs:
+  j1:
+    runs-on: ubuntu-latest
+    container: golang:1.17
+    services:
+      apple:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: action
+        ports:
+          - 3306:3306
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: go connect
+        run: |
+          ls -lh
+          go run ./...
